@@ -9,24 +9,15 @@
 </nav>
 
 <div class="container mt-5">
-    <h1 class="text-center">투두 리스트</h1>
+    <h1 class="text-center m-3">투두 리스트</h1>
     <ul class="list-group">
-        <li class="list-group-item">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="todo1">
-                <label class="form-check-label" for="todo1">할 일 1</label>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="todo2">
-                <label class="form-check-label" for="todo2">할 일 2</label>
-            </div>
-        </li>
-        <li class="list-group-item">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="todo3">
-                <label class="form-check-label" for="todo3">할 일 3</label>
+        <li th:each="todo : ${todoList}" class="list-group-item">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"  th:checked="${todo.isDone()}">
+                <label class="custom-control-label" >
+                    <h4 th:text="${todo.getTitle()}"></h4>
+                    <p th:text="${todo.getContent()}"></p>
+                </label>
             </div>
         </li>
     </ul>

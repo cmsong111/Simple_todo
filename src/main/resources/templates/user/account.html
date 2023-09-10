@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{/fragments/header.html :: fragment-header}"></div>
+</head>
+<body>
+<nav>
+    <div th:replace="~{/fragments/nav.html :: fragment-nav}"></div>
+</nav>
+<div class="container mt-5">
+    <h1 class="text-center">사용자 정보</h1>
+    <form th:action="@{/account}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label for="username">이메일</label>
+            <input type="email" class="form-control" id="username" th:field="*{username}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nickname">닉네임</label>
+            <input type="text" class="form-control" id="nickname" th:field="*{nickname}">
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" id="password" th:field="*{password}">
+        </div>
+        <button type="submit" class="btn btn-primary">수정 저장</button>
+    </form>
+</div>
+<footer>
+    <div th:replace="~{/fragments/footer.html :: fragment-footer}"></div>
+</footer>
+
+</body>
+</html>

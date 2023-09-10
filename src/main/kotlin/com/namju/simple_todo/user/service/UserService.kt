@@ -19,7 +19,7 @@ class UserService(
     val log = LoggerFactory.getLogger(this::class.java)
 
     /**
-     * Spring Security ÇÊ¼ö ¸Ş¼Òµå ±¸Çö
+     * Spring Security í•„ìˆ˜ ë©”ì†Œë“œ êµ¬í˜„
      *
      * @param username
      * @return UserDetails
@@ -31,15 +31,15 @@ class UserService(
     }
 
     /**
-     * È¸¿ø°¡ÀÔ ¸Ş¼Òµå
+     * íšŒì›ê°€ì… ë©”ì†Œë“œ
      *
-     * @param registerForm È¸¿ø°¡ÀÔ Æû
-     * @return UserDetails È¸¿ø°¡ÀÔ ¼º°ø½Ã UserDetails ¹İÈ¯
+     * @param registerForm íšŒì›ê°€ì… í¼
+     * @return UserDetails íšŒì›ê°€ì… ì„±ê³µì‹œ UserDetails ë°˜í™˜
      */
     fun register(registerForm: RegisterForm): UserEntity {
 
         if (userRepository.existsByUsername(registerForm.username)) {
-            throw Exception("ÀÌ¹Ì °¡ÀÔµÈ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.")
+            throw Exception("ì´ë¯¸ ê°€ì…ëœ ì´ë©”ì¼ì…ë‹ˆë‹¤.")
         }
 
         return userRepository.save(
@@ -49,5 +49,25 @@ class UserService(
                 nickname = registerForm.nickname,
             )
         )
+    }
+
+    /**
+     * íšŒì›ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸° ë©”ì†Œë“œ
+     *
+     * @param username íšŒì›ì •ë³´ë¥¼ ë¶ˆëŸ¬ì˜¬ íšŒì›ì˜ username
+     * @return UserEntity íšŒì›ì •ë³´
+     */
+    fun getUser(username: String): UserEntity {
+        return userRepository.findByUsername(username)
+    }
+
+    fun updateUser(username: String, nickname: String, password: String): UserEntity {
+        userRepository.findByUsername(username).apply {
+            this.nickname = nickname
+            this.password = passwordEncoder.encode(password)
+        }.let {
+            userRepository.save(it)
+            return it
+        }
     }
 }

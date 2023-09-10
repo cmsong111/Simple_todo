@@ -15,7 +15,7 @@ class UserEntity(
 
     private var username : String,
     private var password : String,
-    private var nickname : String,
+     var nickname : String,
 
     ) : UserDetails {
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
@@ -24,6 +24,9 @@ class UserEntity(
 
     override fun getPassword(): String {
         return password
+    }
+    fun setPassword(password: String) {
+        this.password = password
     }
 
     override fun getUsername(): String {

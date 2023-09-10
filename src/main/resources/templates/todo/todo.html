@@ -8,19 +8,50 @@
     <div th:replace="~{/fragments/nav.html :: fragment-nav}"></div>
 </nav>
 
-<div class="container mt-5">
-    <h1 class="text-center m-3">투두 리스트</h1>
+<div class="container mtb-8">
+    <h1 class="text-center m-3" th:text="|${username}의 투두 리스트|"></h1>
+    <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#addTodoModal">
+        New Todo
+    </button>
     <ul class="list-group">
         <li th:each="todo : ${todoList}" class="list-group-item">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input"  th:checked="${todo.isDone()}">
-                <label class="custom-control-label" >
+                <input type="checkbox" class="custom-control-input" th:checked="${todo.isDone()}">
+                <label class="custom-control-label">
                     <h4 th:text="${todo.getTitle()}"></h4>
                     <p th:text="${todo.getContent()}"></p>
                 </label>
             </div>
         </li>
     </ul>
+</div>
+
+<!-- 모달 창 -->
+<div class="modal fade" id="addTodoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">새로운 투두 추가</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/todo}" method="post">
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">내용</label>
+                        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">추가</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer>

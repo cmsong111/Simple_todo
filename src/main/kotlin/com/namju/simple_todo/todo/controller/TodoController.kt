@@ -1,10 +1,12 @@
 package com.namju.simple_todo.todo.controller
 
+import com.namju.simple_todo.todo.dto.TodoForm
 import com.namju.simple_todo.todo.service.TodoSerivce
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import java.security.Principal
 
@@ -22,6 +24,21 @@ class TodoController(
         todoService.getTodoListByUsername(principal.name).apply {
             model.addAttribute("todoList", this)
         }
+        model.addAttribute("username", principal.name)
         return "todo/todo"
+    }
+
+    @PostMapping
+    @PreAuthorize("hasRole('ROLE_USER')")
+    fun addTodo(
+        principal: Principal,
+        todoForm: TodoForm
+    ) : String {
+        todoService.addTodo(
+            username = principal.name,
+            title = todoForm.title,
+            content = todoForm.content
+        )
+        return "redirect:/todo"
     }
 }

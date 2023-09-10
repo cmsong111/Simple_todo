@@ -12,12 +12,33 @@ class TodoSerivce(
     var userRepository: UserRepository
 ) {
     /**
-     * À¯Àú ¾ÆÀÌµğ·Î Todo ¸®½ºÆ® Á¶È¸
-     * @param userId À¯Àú ¾ÆÀÌµğ
-     * @return List<TodoEntity> Todo ¸®½ºÆ®
+     * ìœ ì € ì•„ì´ë””ë¡œ Todo ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ
+     * @param userId ìœ ì € ì•„ì´ë””
+     * @return List<TodoEntity> Todo ë¦¬ìŠ¤íŠ¸
      */
     fun getTodoListByUsername(username: String): List<TodoEntity> {
         val user: UserEntity = userRepository.findByUsername(username)
         return todoRepository.findByUser(user)
+    }
+
+    /**
+     * Todo ì¶”ê°€
+     * @param username ìœ ì € ì•„ì´ë””
+     * @param title Todo ì œëª©
+     * @param content Todo ë‚´ìš©
+     */
+    fun addTodo(
+        username: String,
+        title: String,
+        content: String
+    ) {
+        val user: UserEntity = userRepository.findByUsername(username)
+        todoRepository.save(
+            TodoEntity(
+                title = title,
+                content = content,
+                user = user
+            )
+        )
     }
 }

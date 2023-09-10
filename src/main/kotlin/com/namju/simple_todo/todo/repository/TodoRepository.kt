@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TodoRepository : JpaRepository<TodoEntity, Long> {
     fun findByUser(user: UserEntity): List<TodoEntity>
+
+
+    fun findByUserOrderByIsDoneAsc(user: UserEntity): List<TodoEntity>
 }

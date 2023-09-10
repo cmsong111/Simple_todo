@@ -2,8 +2,23 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="~{/fragments/header.html :: fragment-header}"></div>
+
 </head>
-<body>
+<script th:inline="javascript">
+    function changeState(todoIdx) {
+        console.log(todoIdx  + "변경 신청됨");
+        $.ajax({
+            type: "PATCH",
+            url: "/api/todo/" + todoIdx,
+            contentType: "application/json; charset=utf-8",
+        }).done(function (response) {
+            location.reload();
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    }
+</script>
+<body class="d-flex flex-column min-vh-100">
 <nav>
     <div th:replace="~{/fragments/nav.html :: fragment-nav}"></div>
 </nav>
@@ -15,8 +30,9 @@
     </button>
     <ul class="list-group">
         <li th:each="todo : ${todoList}" class="list-group-item">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" th:checked="${todo.isDone()}">
+            <div class="custom-control custom-checkbox" th:onclick="|changeState(${todo.id})|" >
+                <input type="checkbox" class="custom-control-input" th:id="|TODO_${todo.id}|"
+                       th:checked="${todo.done}">
                 <label class="custom-control-label">
                     <h4 th:text="${todo.getTitle()}"></h4>
                     <p th:text="${todo.getContent()}"></p>
@@ -29,7 +45,7 @@
 <!-- 모달 창 -->
 <div class="modal fade" id="addTodoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">새로운 투두 추가</h5>

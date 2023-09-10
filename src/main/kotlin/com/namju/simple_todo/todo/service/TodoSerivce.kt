@@ -4,6 +4,7 @@ import com.namju.simple_todo.todo.entity.TodoEntity
 import com.namju.simple_todo.todo.repository.TodoRepository
 import com.namju.simple_todo.user.entity.UserEntity
 import com.namju.simple_todo.user.repository.UserRepository
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,6 +12,7 @@ class TodoSerivce(
     var todoRepository: TodoRepository,
     var userRepository: UserRepository
 ) {
+   val log = LoggerFactory.getLogger(this::class.java)
     /**
      * 유저 아이디로 Todo 리스트 조회
      * @param userId 유저 아이디
@@ -18,7 +20,7 @@ class TodoSerivce(
      */
     fun getTodoListByUsername(username: String): List<TodoEntity> {
         val user: UserEntity = userRepository.findByUsername(username)
-        return todoRepository.findByUser(user)
+        return todoRepository.findByUserOrderByIsDoneAsc(user)
     }
 
     /**
@@ -40,5 +42,13 @@ class TodoSerivce(
                 user = user
             )
         )
+    }
+
+    fun changeDone(
+        todoId: Long
+    ) {
+        val todo: TodoEntity = todoRepository.findById(todoId).get()
+        todo.isDone = !todo.isDone
+        log.info(todoRepository.save(todo).toString());
     }
 }

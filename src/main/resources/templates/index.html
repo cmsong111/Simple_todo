@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="~{/fragments/header.html :: fragment-header}"></div>
-</head>
-<body>
-<div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 ">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>Simple TODO</h1>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col">
-                    <h2>로그인</h2>
-                    <form method="post" action="/login_proc">
-                        <div class="form-group">
-                            <label for="username">이메일</label>
-                            <input type="email" class="form-control" id="username" name="username" required>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout" lang="ko">
+
+<th:block layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+            <div class="col-md-6">
+                <div class="row ui-corner-left">
+                    <div class="col-md-6">
+                        <h1>Simple TODO</h1>
+                        <p>간단한 할 일 목록을 만들어 보세요.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col">
+                                <h2>로그인</h2>
+                                <form method="post" action="/login_proc">
+                                    <div class="form-group p-2">
+                                        <label for="username">이메일</label>
+                                        <input type="email" class="form-control" id="username" name="username" required>
+                                    </div>
+                                    <div class="form-group p-2" >
+                                        <label for="password">비밀번호</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">로그인</button>
+                                    <button type="button" class="btn btn-primary"
+                                            onclick="location.href='/register'">회원 가입</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">비밀번호</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" >로그인</button>
-                        <button type="button" class="btn btn-primary" onclick="location.href='/register'">회원 가입</button>
-                    </form>
+                    </div>
+                    <div class="col-md-12 text-center mt-4">
+                        <hr style="border-top: 2px solid #ccc; width: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<footer>
-    <div th:replace="~{/fragments/footer.html :: fragment-footer}"></div>
-</footer>
-</body>
-
+</th:block>
 </html>

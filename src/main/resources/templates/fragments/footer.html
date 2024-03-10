@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<footer th:fragment="fragment-footer" class="footer py-5 bg-light mt-auto">
+
+<footer th:fragment="footerFragment" class="footer py-5 bg-light mt-auto">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <p>&copy; Simple Todo Application by Kotlin</p>
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2024 Simple Todo Application by Kotlin</p>
             </div>
-            <div class="col">
-                <p>개발자: Namju kim</p>
-                <p>연락처: <a href="mailto:cmsong111@gmail.com">cmsong111@gmail.com</a></p>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-0">개발자: Namju Kim</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-0">연락처: <a href="mailto:cmsong111@gmail.com">cmsong111@gmail.com</a></p>
+                    </div>
+                </div>
             </div>
         </div>
+        <hr class="my-4"> <!-- 선택 사항: 시각적 구분선 추가 -->
+        <p class="small text-muted">이 웹 페이지는 개인 학습 및 연습 목적으로 작성되었습니다.<br>최신 정보는 확인해 주세요.</p>
     </div>
 </footer>
+
 </html>

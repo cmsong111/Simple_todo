@@ -13,18 +13,19 @@ class UserEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var idx: Long = 0,
 
-    private var username : String,
-    private var password : String,
-     var nickname : String,
+    private var username: String,
+    private var password: String,
+    var nickname: String,
 
     ) : UserDetails {
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return mutableListOf( GrantedAuthority { "ROLE_USER" } )
+        return mutableListOf(GrantedAuthority { "ROLE_USER" })
     }
 
     override fun getPassword(): String {
         return password
     }
+
     fun setPassword(password: String) {
         this.password = password
     }

@@ -4,6 +4,7 @@ package com.namju.simple_todo.user.service
 import com.namju.simple_todo.user.dto.RegisterForm
 import com.namju.simple_todo.user.entity.UserEntity
 import com.namju.simple_todo.user.repository.UserRepository
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -16,7 +17,7 @@ class UserService(
     private val passwordEncoder: PasswordEncoder
 ) : UserDetailsService {
 
-    val log = LoggerFactory.getLogger(this::class.java)
+    val log: Logger = LoggerFactory.getLogger(this::class.java)
 
     /**
      * Spring Security 필수 메소드 구현

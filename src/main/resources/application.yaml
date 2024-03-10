@@ -21,7 +21,12 @@ spring:
 
 
 
-debug: true
-
 server:
   port: 80
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web: DEBUG

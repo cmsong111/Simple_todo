@@ -1,7 +1,5 @@
-package com.namju.simple_todo.user.controller
+package com.namju.simple_todo.user
 
-import com.namju.simple_todo.user.service.UserService
-import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,7 +18,6 @@ class UserController(
     }
 
     @GetMapping("/account")
-    @PreAuthorize("isAuthenticated()")
     fun account(
         model: Model,
         principal: Principal
@@ -30,7 +27,6 @@ class UserController(
     }
 
     @PostMapping("/account")
-    @PreAuthorize("isAuthenticated()")
     fun account(
         model: Model,
         principal: Principal,

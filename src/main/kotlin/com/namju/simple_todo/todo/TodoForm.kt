@@ -1,4 +1,4 @@
-package com.namju.simple_todo.todo.dto
+package com.namju.simple_todo.todo
 
 data class TodoForm (
     var title: String,

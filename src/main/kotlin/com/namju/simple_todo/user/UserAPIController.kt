@@ -1,8 +1,6 @@
-package com.namju.simple_todo.user.controller
+package com.namju.simple_todo.user
 
-import com.namju.simple_todo.user.dto.RegisterForm
-import com.namju.simple_todo.user.entity.UserEntity
-import com.namju.simple_todo.user.service.UserService
+import com.namju.simple_todo.auth.RegisterForm
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -20,7 +18,7 @@ class UserAPIController(
     @PostMapping("/register")
     fun register(
         @RequestBody registerForm: RegisterForm
-    ): UserEntity {
+    ): User {
         log.info("registerForm: $registerForm")
         return userService.register(registerForm)
     }

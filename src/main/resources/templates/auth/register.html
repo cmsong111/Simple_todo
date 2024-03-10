@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout" lang="ko">
+<th:block layout:fragment="content">
+    <script>
+        function register() {
+            const url = "/auth/register";
+            const options = {
+                method: "POST",
+                headers: {"Content-Type": "application/json; charset=utf-8"},
+                body: JSON.stringify({
+                    "username": document.getElementById("username").value,
+                    "password": document.getElementById("password").value,
+                    "nickname": document.getElementById("nickname").value
+                })
+            }
+            fetch(url, options)
+                .then(response =>  {
+                    if (response.status === 201) {
+                        alert("회원 가입이 완료되었습니다.");
+                        window.location.href = "/";
+                    } else {
+                        alert("회원 가입에 실패하였습니다.");
+                    }
+                });
+        }
+    </script>
+    <div class="d-flex flex-column min-vh-100">
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="text-center">회원 가입</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">이메일</label>
+                            <input type="email" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">비밀번호</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">닉네임</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="register()">회원 가입</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

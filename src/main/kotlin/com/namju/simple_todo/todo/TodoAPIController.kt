@@ -1,6 +1,5 @@
-package com.namju.simple_todo.todo.controller
+package com.namju.simple_todo.todo
 
-import com.namju.simple_todo.todo.service.TodoSerivce
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable

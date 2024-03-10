@@ -1,9 +1,7 @@
-package com.namju.simple_todo.todo.service
+package com.namju.simple_todo.todo
 
-import com.namju.simple_todo.todo.entity.TodoEntity
-import com.namju.simple_todo.todo.repository.TodoRepository
-import com.namju.simple_todo.user.entity.UserEntity
-import com.namju.simple_todo.user.repository.UserRepository
+import com.namju.simple_todo.user.User
+import com.namju.simple_todo.user.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -18,8 +16,8 @@ class TodoSerivce(
      * @param userId 유저 아이디
      * @return List<TodoEntity> Todo 리스트
      */
-    fun getTodoListByUsername(username: String): List<TodoEntity> {
-        val user: UserEntity = userRepository.findByUsername(username)
+    fun getTodoListByUsername(username: String): List<Todo> {
+        val user: User = userRepository.findByUsername(username)
         return todoRepository.findByUserOrderByIsDoneAsc(user)
     }
 
@@ -34,9 +32,9 @@ class TodoSerivce(
         title: String,
         content: String
     ) {
-        val user: UserEntity = userRepository.findByUsername(username)
+        val user: User = userRepository.findByUsername(username)
         todoRepository.save(
-            TodoEntity(
+            Todo(
                 title = title,
                 content = content,
                 user = user
@@ -47,7 +45,7 @@ class TodoSerivce(
     fun changeDone(
         todoId: Long
     ) {
-        val todo: TodoEntity = todoRepository.findById(todoId).get()
+        val todo: Todo = todoRepository.findById(todoId).get()
         todo.isDone = !todo.isDone
         log.info(todoRepository.save(todo).toString());
     }

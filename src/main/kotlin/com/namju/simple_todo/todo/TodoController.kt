@@ -1,7 +1,5 @@
-package com.namju.simple_todo.todo.controller
+package com.namju.simple_todo.todo
 
-import com.namju.simple_todo.todo.dto.TodoForm
-import com.namju.simple_todo.todo.service.TodoSerivce
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

@@ -11,29 +11,40 @@
                         <p>간단한 할 일 목록을 만들어 보세요.</p>
                     </div>
                     <div class="col-md-6">
-                        <div class="row">
-                            <div class="col">
-                                <h2>로그인</h2>
-                                <form method="post" action="/login">
-                                    <div class="form-group p-2">
-                                        <label for="username">이메일</label>
-                                        <input type="email" class="form-control" id="username" name="username" required>
-                                    </div>
-                                    <div class="form-group p-2">
-                                        <label for="password">비밀번호</label>
-                                        <input type="password" class="form-control" id="password" name="password" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">로그인</button>
-                                    <button type="button" class="btn btn-primary"
-                                            onclick="location.href='/auth/register'">회원 가입
-                                    </button>
+                        <div th:if="${#authorization.expression('isAuthenticated()')}">
+                            <div class="row">
+                                <h2 th:text="|님 환영합니다.|"></h2>
+                                <button type="button" onClick="location.href='/todo'" class="btn btn-primary">Todo 서비스 이동</button>
+                                <form method="post" action="/logout">
+                                    <button type="submit" class="btn btn-primary">로그아웃</button>
                                 </form>
                             </div>
                         </div>
+                        <div th:if="${#authorization.expression('isAnonymous()')}">
+                            <div class="row">
+                                <div class="col">
+                                    <h2>로그인</h2>
+                                    <form method="post" action="/login">
+                                        <div class="form-group p-2">
+                                            <label for="username">이메일</label>
+                                            <input type="email" class="form-control" id="username" name="username" required>
+                                        </div>
+                                        <div class="form-group p-2">
+                                            <label for="password">비밀번호</label>
+                                            <input type="password" class="form-control" id="password" name="password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">로그인</button>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="location.href='/auth/register'">회원 가입
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-12 text-center mt-4">
-                        <hr style="border-top: 2px solid #ccc; width: 100%;">
-                    </div>
+                </div>
+                <div class="col-md-12 text-center mt-4">
+                    <hr style="border-top: 2px solid #ccc; width: 100%;">
                 </div>
             </div>
         </div>

@@ -11,12 +11,6 @@ import java.security.Principal
 class UserController(
     var userService: UserService,
 ) {
-
-    @GetMapping("/register")
-    fun register(): String {
-        return "user/register"
-    }
-
     @GetMapping("/account")
     fun account(
         model: Model,

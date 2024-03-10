@@ -19,7 +19,9 @@
                         alert("회원 가입이 완료되었습니다.");
                         window.location.href = "/";
                     } else {
-                        alert("회원 가입에 실패하였습니다.");
+                        response.json().then(data => {
+                            alert(data.message);
+                        });
                     }
                 });
         }

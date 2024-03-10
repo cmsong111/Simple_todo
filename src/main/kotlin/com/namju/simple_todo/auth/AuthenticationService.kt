@@ -1,5 +1,7 @@
 package com.namju.simple_todo.auth
 
+import com.namju.simple_todo.exception.CustomErrorCode
+import com.namju.simple_todo.exception.CustomException
 import com.namju.simple_todo.user.User
 import com.namju.simple_todo.user.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
@@ -19,7 +21,7 @@ class AuthenticationService(
 
     fun register(registerForm: RegisterForm): User {
         if (userRepository.existsByUsername(registerForm.username)) {
-            throw RuntimeException("이미 존재하는 닉네임입니다.")
+            throw CustomException(CustomErrorCode.ALREADY_EXIST_USER_ID)
         }
         return userRepository.save(
             User(

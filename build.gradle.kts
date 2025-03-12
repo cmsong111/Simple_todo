@@ -1,13 +1,18 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.3.9"
+    id("org.springframework.boot") version "3.4.3"
     id("io.spring.dependency-management") version "1.1.7"
+//    id("org.hibernate.orm") version "6.6.8.Final"
+//    id("org.graalvm.buildtools.native") version "0.10.5"
     kotlin("plugin.jpa") version "1.9.25"
 }
 
+
 group = "com.namju"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
     toolchain {
@@ -52,6 +57,13 @@ kotlin {
     }
 }
 
+
+//hibernate {
+//    enhancement {
+//        enableAssociationManagement = true
+//    }
+//}
+
 allOpen {
     annotation("jakarta.persistence.Entity")
     annotation("jakarta.persistence.MappedSuperclass")
@@ -60,4 +72,8 @@ allOpen {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.withType<BootBuildImage> {
+    createdDate = "now"
 }

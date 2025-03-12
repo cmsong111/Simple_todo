@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/main/kotlin/com/namju/simple_todo/auth/RegisterForm.kt" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/src/main/kotlin/com/namju/simple_todo/auth/RegisterForm.kt" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/kotlin/com/namju/todo/auth/RegisterForm.kt" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/main/kotlin/com/namju/todo/auth/RegisterForm.kt" charset="UTF-16" />
     <file url="file://$PROJECT_DIR$/src/main/resources/data.sql" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

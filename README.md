@@ -1,58 +1,58 @@
 # Simple TODO (Spring Boot Kotlin Security)
 
-Simple TODO´Â Spring Boot¿Í KotlinÀ» »ç¿ëÇÏ¿© ±¸ÇöµÈ °£´ÜÇÑ ÇÒ ÀÏ °ü¸® À¥ ¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀÔ´Ï´Ù. 
+Simple TODOëŠ” Spring Bootì™€ Kotlinì„ ì‚¬ìš©í•˜ì—¬ êµ¬í˜„ëœ ê°„ë‹¨í•œ í•  ì¼ ê´€ë¦¬ ì›¹ ì• í”Œë¦¬ì¼€ì´ì…˜ìž…ë‹ˆë‹¤. 
 
-ÀÌ ÇÁ·ÎÁ§Æ®´Â Spring Security¸¦ ÅëÇØ »ç¿ëÀÚ ÀÎÁõ°ú ±ÇÇÑ °ü¸®¸¦ ±¸ÇöÇÏ¿´½À´Ï´Ù.
+ì´ í”„ë¡œì íŠ¸ëŠ” Spring Securityë¥¼ í†µí•´ ì‚¬ìš©ìž ì¸ì¦ê³¼ ê¶Œí•œ ê´€ë¦¬ë¥¼ êµ¬í˜„í•˜ì˜€ìŠµë‹ˆë‹¤.
 
-## ÇÁ·ÎÁ§Æ® ¼³Ä¡ ¹× ½ÇÇà
+## í”„ë¡œì íŠ¸ ì„¤ì¹˜ ë° ì‹¤í–‰
 
-1. Git ÀúÀå¼Ò¸¦ Å¬·ÐÇÕ´Ï´Ù.
+1. Git ì €ìž¥ì†Œë¥¼ í´ë¡ í•©ë‹ˆë‹¤.
 
     ```bash
     git clone https://github.com/cmsong111/Simple_todo.git
     ```
-2. ÇÁ·ÎÁ§Æ® ·çÆ® µð·ºÅä¸®·Î ÀÌµ¿ÇÕ´Ï´Ù.
+2. í”„ë¡œì íŠ¸ ë£¨íŠ¸ ë””ë ‰í† ë¦¬ë¡œ ì´ë™í•©ë‹ˆë‹¤.
     ```bash
     cd Simple_todo
     ```
-3. ÇÁ·ÎÁ§Æ®¸¦ ºôµåÇÕ´Ï´Ù.
+3. í”„ë¡œì íŠ¸ë¥¼ ë¹Œë“œí•©ë‹ˆë‹¤.
     ```bash
     ./gradlew build
     ```
-4. ºôµå°¡ ¿Ï·áµÇ¸é Spring Boot ¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀ» ½ÇÇàÇÕ´Ï´Ù.
+4. ë¹Œë“œê°€ ì™„ë£Œë˜ë©´ Spring Boot ì• í”Œë¦¬ì¼€ì´ì…˜ì„ ì‹¤í–‰í•©ë‹ˆë‹¤.
 
 
 
-¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀº ±âº»ÀûÀ¸·Î 8080 Æ÷Æ®¿¡¼­ ½ÇÇàµË´Ï´Ù. À¥ ºê¶ó¿ìÀú¿¡¼­ `http://localhost:8080`·Î Á¢¼ÓÇÏ¿© ¾ÖÇÃ¸®ÄÉÀÌ¼ÇÀ» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.
+ì• í”Œë¦¬ì¼€ì´ì…˜ì€ ê¸°ë³¸ì ìœ¼ë¡œ 8080 í¬íŠ¸ì—ì„œ ì‹¤í–‰ë©ë‹ˆë‹¤. ì›¹ ë¸Œë¼ìš°ì €ì—ì„œ `http://localhost:8080`ë¡œ ì ‘ì†í•˜ì—¬ ì• í”Œë¦¬ì¼€ì´ì…˜ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
-## ÁÖ¿ä ±â´É
+## ì£¼ìš” ê¸°ëŠ¥
 
-- ÇÒ ÀÏ ¸ñ·Ï Á¶È¸
-- ÇÒ ÀÏ Ãß°¡, ¼öÁ¤, »èÁ¦
-- »ç¿ëÀÚ µî·Ï ¹× ·Î±×ÀÎ
+- í•  ì¼ ëª©ë¡ ì¡°íšŒ
+- í•  ì¼ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ
+- ì‚¬ìš©ìž ë“±ë¡ ë° ë¡œê·¸ì¸
 
-## ±â¼ú ½ºÅÃ
+## ê¸°ìˆ  ìŠ¤íƒ
 
 - Spring Boot
 - Kotlin
 - Spring Security
 - Thymeleaf
-- µ¥ÀÌÅÍº£ÀÌ½º (H2)
+- ë°ì´í„°ë² ì´ìŠ¤ (H2)
 
-## ÇÁ·ÎÁ§Æ® ±¸Á¶
+## í”„ë¡œì íŠ¸ êµ¬ì¡°
 
-- `src/main/kotlin/com/namju/simpletodo` : Kotlin ÄÚµå ¹× ÆÐÅ°Áö
-- `src/main/resources` : ¸®¼Ò½º ÆÄÀÏ ¹× ÅÛÇÃ¸´
-- `build.gradle.kts` : ÇÁ·ÎÁ§Æ® ÀÇÁ¸¼º ¹× ¼³Á¤ ÆÄÀÏ
+- `src/main/kotlin/com/namju/simpletodo` : Kotlin ì½”ë“œ ë° íŒ¨í‚¤ì§€
+- `src/main/resources` : ë¦¬ì†ŒìŠ¤ íŒŒì¼ ë° í…œí”Œë¦¿
+- `build.gradle.kts` : í”„ë¡œì íŠ¸ ì˜ì¡´ì„± ë° ì„¤ì • íŒŒì¼
 - ...
 
-## ±â¿©
+## ê¸°ì—¬
 
-1. ÀÌ ÀúÀå¼Ò¸¦ Æ÷Å©ÇÕ´Ï´Ù.
-2. »õ·Î¿î ±â´É ¶Ç´Â ¹ö±× ¼öÁ¤À» À§ÇÑ ºê·£Ä¡¸¦ »ý¼ºÇÕ´Ï´Ù.
-3. º¯°æ »çÇ×À» Ä¿¹ÔÇÏ°í Çª½ÃÇÕ´Ï´Ù.
-4. Pull Request¸¦ »ý¼ºÇÕ´Ï´Ù.
+1. ì´ ì €ìž¥ì†Œë¥¼ í¬í¬í•©ë‹ˆë‹¤.
+2. ìƒˆë¡œìš´ ê¸°ëŠ¥ ë˜ëŠ” ë²„ê·¸ ìˆ˜ì •ì„ ìœ„í•œ ë¸Œëžœì¹˜ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
+3. ë³€ê²½ ì‚¬í•­ì„ ì»¤ë°‹í•˜ê³  í‘¸ì‹œí•©ë‹ˆë‹¤.
+4. Pull Requestë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
 
-## ¶óÀÌ¼±½º
+## ë¼ì´ì„ ìŠ¤
 
-ÀÌ ÇÁ·ÎÁ§Æ®´Â MIT ¶óÀÌ¼±½º ÇÏ¿¡ ¶óÀÌ¼±½º°¡ ºÎ¿©µË´Ï´Ù. ÀÚ¼¼ÇÑ ³»¿ëÀº [LICENSE](LICENSE) ÆÄÀÏÀ» ÂüÁ¶ÇÏ¼¼¿ä.
+ì´ í”„ë¡œì íŠ¸ëŠ” MIT ë¼ì´ì„ ìŠ¤ í•˜ì— ë¼ì´ì„ ìŠ¤ê°€ ë¶€ì—¬ë©ë‹ˆë‹¤. ìžì„¸í•œ ë‚´ìš©ì€ [LICENSE](LICENSE) íŒŒì¼ì„ ì°¸ì¡°í•˜ì„¸ìš”.

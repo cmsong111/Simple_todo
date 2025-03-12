@@ -1,0 +1,44 @@
+name: Push to Docker Hub
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    name: Build and Push
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Permissions for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME  }}
+          password: ${{ secrets.DOCKERHUB_TOKEN  }}
+
+      - name: Get the version
+        run: echo "VERSION=$(./gradlew properties -q | grep '^version:' | awk '{print $2}')" >> $GITHUB_ENV
+
+      - name: Build with Gradle BootBuildImage
+        run: ./gradlew clean bootBuildImage
+
+      - name: Push to GitHub Container Registry
+        run: |
+          docker tag docker.io/library/todo:${{ env.VERSION }} ${{ vars.DOCKERHUB_USERNAME }}/todo:${{ env.VERSION }}
+          docker tag docker.io/library/todo:${{ env.VERSION }} ${{ vars.DOCKERHUB_USERNAME }}/todo:latest
+          docker push ${{ vars.DOCKERHUB_USERNAME }}/todo:${{ env.VERSION }}
+          docker push ${{ vars.DOCKERHUB_USERNAME }}/todo:latest
